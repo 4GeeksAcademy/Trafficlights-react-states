@@ -9,33 +9,34 @@ import "../styles/index.css";
 import Home from "./component/home.jsx";
 
 const TrafficLight = () => {
-    const [activeLight, setActiveLight] = useState(null);
-  
-    const handleClick = (color) => {
-      setActiveLight(color);
-    };
-  
-    return (
-        <><div className="cable"></div>
-        <div className="traffic-light">
-            <div
-                className={`light red ${activeLight === 'red' ? 'active' : ''}`}
-                onClick={() => handleClick('red')}
-            ></div>
-            <div
-                className={`light yellow ${activeLight === 'yellow' ? 'active' : ''}`}
-                onClick={() => handleClick('yellow')}
-            ></div>
-            <div
-                className={`light green ${activeLight === 'green' ? 'active' : ''}`}
-                onClick={() => handleClick('green')}
-            ></div>
-        </div></>
-    );
+  const [activeLight, setActiveLight] = useState('red');
+
+  const handleLightClick = (color) => {
+    setActiveLight(color);
   };
-  
+
+  const handleRandomColor = () => {
+    const colors = ['red', 'yellow', 'green'];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    setActiveLight(randomColor);
+  };
+
+  return (
+    <div className="traffic-light">
+      <div
+        className={`light red ${activeLight === 'red' ? 'active' : ''}`}
+        onClick={() => handleLightClick('red')}></div>
+      <div
+        className={`light yellow ${activeLight === 'yellow' ? 'active' : ''}`}
+        onClick={() => handleLightClick('yellow')}></div>
+      <div
+        className={`light green ${activeLight === 'green' ? 'active' : ''}`}
+        onClick={() => handleLightClick('green')}></div>
+      <button onClick={handleRandomColor}>Cambiar al Azar</button>
+    </div>
+  );
+};
 
 export default TrafficLight;
-
 
 ReactDOM.render(<Home />, document.querySelector("#app"));

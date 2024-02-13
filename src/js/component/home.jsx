@@ -8,6 +8,7 @@ import TrafficLight from "..";
 const Home = () => {
 	return (
 		<div>
+		<div className="cable"></div>
 		<TrafficLight />
 		</div>
 	);
